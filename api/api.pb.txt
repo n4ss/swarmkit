@@ -711,13 +711,6 @@ file {
       json_name: "swiftPrefix"
     }
     field {
-      name: "php_class_prefix"
-      number: 40
-      label: LABEL_OPTIONAL
-      type: TYPE_STRING
-      json_name: "phpClassPrefix"
-    }
-    field {
       name: "uninterpreted_option"
       number: 999
       label: LABEL_REPEATED
@@ -797,10 +790,6 @@ file {
     reserved_range {
       start: 8
       end: 9
-    }
-    reserved_range {
-      start: 9
-      end: 10
     }
   }
   message_type {
@@ -944,10 +933,6 @@ file {
     extension_range {
       start: 1000
       end: 536870912
-    }
-    reserved_range {
-      start: 5
-      end: 6
     }
   }
   message_type {
@@ -4406,8 +4391,25 @@ file {
       }
       json_name: "resourceReferences"
     }
+    field {
+      name: "entitlements"
+      number: 12
+      label: LABEL_REPEATED
+      type: TYPE_STRING
+      json_name: "entitlements"
+    }
     oneof_decl {
       name: "runtime"
+    }
+  }
+  message_type {
+    name: "Entitlement"
+    field {
+      name: "full_name"
+      number: 1
+      label: LABEL_REPEATED
+      type: TYPE_STRING
+      json_name: "fullName"
     }
   }
   message_type {
@@ -5392,6 +5394,9 @@ file {
       label: LABEL_OPTIONAL
       type: TYPE_MESSAGE
       type_name: ".docker.swarmkit.v1.NetworkAttachment"
+      options {
+        deprecated: true
+      }
       json_name: "attachment"
     }
     field {
@@ -5412,6 +5417,14 @@ file {
       type: TYPE_ENUM
       type_name: ".docker.swarmkit.v1.NodeRole"
       json_name: "role"
+    }
+    field {
+      name: "lb_attachments"
+      number: 10
+      label: LABEL_REPEATED
+      type: TYPE_MESSAGE
+      type_name: ".docker.swarmkit.v1.NetworkAttachment"
+      json_name: "lbAttachments"
     }
     options {
       70001 {
